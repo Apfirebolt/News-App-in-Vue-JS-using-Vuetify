@@ -22,6 +22,9 @@
         <li class="nav-item">
           <router-link class="nav-link" to="/headlines">Headlines</router-link>
         </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/keyword">Keyword</router-link>
+        </li>
       </ul>
     </nav>
     <transition
@@ -53,6 +56,10 @@ export default {
   color: #2c3e50;
   padding: 0;
   margin: 0;
+  height: auto;
+  min-height: 100vh;
+  background-image: url('./assets/Python.png');
+  background-repeat: repeat;
 }
 
 .fade-enter-active, .fade-leave-active {

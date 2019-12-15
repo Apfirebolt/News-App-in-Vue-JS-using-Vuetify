@@ -49,6 +49,14 @@ const actions = {
       });
   },
 
+  [types.SET_NEWS_KEYWORD_FULFILLED]: ({commit}, payload) => {
+    let url = `https://newsapi.org/v2/everything?q=${payload}&apiKey=5c2b04e6cd9642afac31fc65203425c1`;
+    axios.get(url)
+      .then((response) => {
+        commit(types.SET_ARTICLES, response.data.articles);
+      });
+  },
+
   [types.SET_MARKS_FULFILLED]: ({ commit }, payload) => {
     setTimeout(() => {
       commit(types.SET_MARKS, payload);

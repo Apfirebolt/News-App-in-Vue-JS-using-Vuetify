@@ -3,8 +3,9 @@ import Router from 'vue-router'
 import Home from '../components/Home'
 import Test from '../components/test/test.vue'
 import Test2 from '../components/test/test2.vue'
-import Test3 from '../components/test/test3.vue'
-import Sources from '../components/source'
+import CountryPage from '../pages/countries/countryPage.vue'
+import Sources from '../pages/Sources.vue'
+import KeywordComponent from '../pages/Keyword.vue'
 import NewsPageComponent from '../pages/categories/newsPage.vue'
 // import TestRouteChildren from '../components/test/routes'
 
@@ -29,13 +30,19 @@ export default new Router({
     {
       path: '/country',
       name: 'country',
-      component: Test3
+      component: CountryPage
     },
 
     {
       path: '/sources',
       name: 'sources',
       component: Sources
+    },
+
+    {
+      path: '/keyword',
+      name: 'keyword',
+      component: KeywordComponent
     },
 
     {
