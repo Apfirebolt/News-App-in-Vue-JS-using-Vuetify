@@ -1,6 +1,7 @@
 <template>
     <div class="hello">
 
+
         <v-container class="blue lighten-5">
             <v-row no-gutters>
                 <v-col
@@ -31,11 +32,20 @@
                         </div>
                     </v-card>
 
+                    <div v-if="dataLoaded" class="text-center my-4">
+                        <v-progress-circular
+                                :size="100"
+                                color="danger"
+                                indeterminate
+                                :light="true"
+                        ></v-progress-circular>
+                    </div>
+
                     <v-card v-if="getNewsKeyword.length > 0" v-for="each_news in getNewsKeyword"
                             class="mx-auto my-4"
-                            max-width="800"
+                            max-width="1000"
                     >
-                        <v-img
+                        <v-img v-if="each_news.urlToImage"
                                 class="white--text align-end"
                                 height="400px"
                                 :src="each_news.urlToImage"
@@ -43,7 +53,7 @@
                         >
                             <v-card-title class="custom_text">{{ each_news.title }}</v-card-title>
                         </v-img>
-
+                        <h3 class="text-danger" v-else>There is no image available for this news</h3>
                         <v-card-subtitle class="pb-0">{{ each_news.description }}</v-card-subtitle>
 
                         <v-card-text>
@@ -91,7 +101,8 @@
     name: 'keyword_search',
     data() {
       return {
-        search_text: ''
+        search_text: '',
+        dataLoaded: false
       }
     },
     methods: {
@@ -100,6 +111,16 @@
       }),
       searchNews() {
         this.newsKeyword(this.convertEncoded);
+        this.dataLoaded = true;
+      }
+    },
+    watch: {
+      getNewsKeyword: function() {
+        if(this.getNewsKeyword.length > 0)
+          this.dataLoaded = false;
+        else
+          this.dataLoaded = true;
+        console.log('Get News Keyword changed now : ', this.getNewsKeyword.length);
       }
     },
     computed: {

@@ -1,5 +1,14 @@
 <template>
     <div class="hello">
+        <h2 class="text-success p-2 bg-white">Our News Sources</h2>
+        <div v-if="!dataLoaded" class="text-center">
+            <v-progress-circular
+                    :size="100"
+                    color="danger"
+                    indeterminate
+                    :light="true"
+            ></v-progress-circular>
+        </div>
         <v-card v-for="each_item in sourceGet"
                 class="mx-auto my-3 p-2"
                 max-width="1000"
@@ -38,6 +47,7 @@
     name: 'news_page',
     data() {
       return {
+        dataLoaded: false
       }
     },
     methods: {
@@ -50,8 +60,10 @@
         sourceGet: types.GET_SOURCES
       })
     },
-    components: {
-
+    watch: {
+      sourceGet: function() {
+        this.dataLoaded = true;
+      }
     },
     created() {
       this.loadSource();

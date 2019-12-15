@@ -46,7 +46,7 @@ export default new Router({
     },
 
     {
-      path: '/headlines',
+      path: '/headlines/:country',
       name: 'headlines',
       component: NewsPageComponent
     },
