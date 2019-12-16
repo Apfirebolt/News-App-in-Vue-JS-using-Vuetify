@@ -36,21 +36,16 @@ const mutations = {
 
 const actions = {
   [types.SET_NEWS_SOURCE_FULFILLED]: ({commit}, payload) => {
-    axios.get('https://newsapi.org/v2/sources?apiKey=5c2b04e6cd9642afac31fc65203425c1')
+    let api_key = process.env.VUE_APP_URL;
+    axios.get(`https://newsapi.org/v2/sources?apiKey=${api_key}`)
       .then((response) => {
         commit(types.SET_NEWS_SOURCE, response.data.sources);
       });
   },
 
-  [types.SET_ARTICLES_FULFILLED]: ({commit}, payload) => {
-    axios.get('https://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=5c2b04e6cd9642afac31fc65203425c1')
-      .then((response) => {
-        commit(types.SET_ARTICLES, response.data.articles);
-      });
-  },
-
   [types.SET_NEWS_KEYWORD_FULFILLED]: ({commit}, payload) => {
-    let url = `https://newsapi.org/v2/everything?q=${payload}&apiKey=5c2b04e6cd9642afac31fc65203425c1`;
+    let api_key = process.env.VUE_APP_URL;
+    let url = `https://newsapi.org/v2/everything?q=${payload}&apiKey=${api_key}`;
     axios.get(url)
       .then((response) => {
         commit(types.SET_ARTICLES, response.data.articles);
