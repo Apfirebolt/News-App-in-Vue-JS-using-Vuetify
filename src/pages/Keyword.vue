@@ -53,7 +53,7 @@
                         >
                             <v-card-title class="custom_text">{{ each_news.title }}</v-card-title>
                         </v-img>
-                        <h3 class="text-danger" v-else>There is no image available for this news</h3>
+
                         <v-card-subtitle class="pb-0">{{ each_news.description }}</v-card-subtitle>
 
                         <v-card-text>
