@@ -1,7 +1,6 @@
 <template>
     <v-container class="blue lighten-5">
-        <h1 class="text-success">{{ current_page }}</h1>
-        <div class="text-center">
+        <div v-if="getPageNumber > 1" class="text-center">
             <v-container>
                 <v-row justify="center">
                     <v-col cols="12">
