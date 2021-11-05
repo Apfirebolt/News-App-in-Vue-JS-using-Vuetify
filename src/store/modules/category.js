@@ -52,12 +52,6 @@ const actions = {
         commit(types.SET_PAGE_NUMBER, page_numbers);
       });
   },
-
-  [types.SET_MARKS_FULFILLED]: ({ commit }, payload) => {
-    setTimeout(() => {
-      commit(types.SET_MARKS, payload);
-    }, 2000)
-  },
 };
 
 export default {
