@@ -33,6 +33,16 @@ const routes = [
         component: () => import('../views/Register.vue')
     },
     {
+        path: '/sources',
+        name: 'Sources',
+        component: () => import('../views/Sources.vue')
+    },
+    {
+        path: '/dashboard',
+        name: 'Dashboard',
+        component: () => import('../views/Dashboard.vue')
+    },
+    {
         path: '/:catchAll(.*)',
         name: '404',
         component: NotFound

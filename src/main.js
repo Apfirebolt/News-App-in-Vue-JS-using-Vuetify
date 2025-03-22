@@ -5,6 +5,7 @@ import { createPinia } from 'pinia'
 import router from './routes'
 import { createVuestic } from "vuestic-ui";
 import "vuestic-ui/css";
+import * as mdi from '@mdi/js'
 
 createApp(App)
   .use(createPinia())

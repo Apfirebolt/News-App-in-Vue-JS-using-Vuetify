@@ -3,9 +3,7 @@ import { ref } from "vue";
 import Cookie from "js-cookie";
 import router from "../routes";
 import httpClient from "../plugins/interceptor";
-import { useToast } from "vue-toastification";
 
-const toast = useToast();
 
 export const useAuth = defineStore("auth", {
   state: () => ({
