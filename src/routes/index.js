@@ -23,6 +23,16 @@ const routes = [
         component: () => import('../views/About.vue')
     },
     {
+        path: '/login',
+        name: 'Login',
+        component: () => import('../views/Login.vue')
+    },
+    {
+        path: '/register',
+        name: 'Register',
+        component: () => import('../views/Register.vue')
+    },
+    {
         path: '/:catchAll(.*)',
         name: '404',
         component: NotFound

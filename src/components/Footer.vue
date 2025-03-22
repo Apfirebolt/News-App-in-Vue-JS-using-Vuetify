@@ -1,15 +1,15 @@
 <template>
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2023 News App. All rights reserved.</p>
+            <p>&copy; {{ currentYear }} News App. All rights reserved.</p>
         </div>
     </footer>
 </template>
 
-<script>
-export default {
-    name: 'Footer'
-}
+<script setup>
+import { ref } from 'vue';
+
+const currentYear = ref(new Date().getFullYear());
 </script>
 
 <style scoped>

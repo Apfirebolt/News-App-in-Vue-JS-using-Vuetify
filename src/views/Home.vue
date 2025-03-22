@@ -1,14 +1,14 @@
 <template>
-    <div>
-      <h1>About Us</h1>
-      <p>
-        Welcome to our News App!
-      </p>
+  <div>
+    <h1>About Us</h1>
+    <p>Welcome to our News App!</p>
+  </div>
+</template>
 
-    </div>
-  </template>
-  
-  <script setup>
+<script setup>
+import { onMounted } from "vue";
 
-  </script>
-  
+onMounted(() => {
+  console.log("About Us component mounted", import.meta.env.VITE_APP_KEY);
+});
+</script>
