@@ -64,6 +64,8 @@ export const useNewsStore = defineStore("news", {
       } catch (error) {
         console.log(error);
         return error;
+      } finally {
+        this.loading = false;
       }
     },
 
@@ -75,22 +77,21 @@ export const useNewsStore = defineStore("news", {
       } catch (error) {
         console.log(error);
         return error;
+      } finally {
+        this.loading = false;
       }
     },
 
-    async getNewsAction(page = 1) {
+    async getNewsAction(payload) {
       try {
-        const headers = {
-          Authorization: `Bearer ${auth.authData.token}`,
-        };
         this.loading = true;
-        const response = await httpClient.get("urls?page=" + page, {
-          headers,
-        });
-        this.news = response.data;
+        const response = await httpClient.get(`everything?q=${payload.searchText}&pageSize=${payload.pageSize}&page=${payload.page}&apiKey=${import.meta.env.VITE_APP_KEY}`);
+        this.news = response.data.articles;
       } catch (error) {
         console.log(error);
         return error;
+      } finally {
+        this.loading = false;
       }
     },
 
