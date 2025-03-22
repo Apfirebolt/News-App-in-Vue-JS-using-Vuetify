@@ -1,20 +1,34 @@
-import Vue from 'vue'
-import App from './App.vue'
-import Vuetify from "vuetify";
-import colors from 'vuetify/lib/util/colors'
-import router from './router/index'
-import { store } from './store/store';
-import 'material-design-icons-iconfont/dist/material-design-icons.css'
-import "vuetify/dist/vuetify.min.css";
-import 'bootstrap/dist/css/bootstrap.min.css'
+// main.js
+import { createApp } from "vue";
+import App from "./App.vue";
+import { createPinia } from 'pinia'
+import router from './routes'
+import { createVuestic } from "vuestic-ui";
+import "vuestic-ui/css";
 
+createApp(App)
+  .use(createPinia())
+  .use(router)
+  .use(
+    createVuestic({
+      config: {
+        colors: {
+          variables: {
+            // Default colors
+            primary: "#443627",
+            secondary: "#AC1754",
+            success: "#40e583",
+            info: "#2c82e0",
+            danger: "#e34b4a",
+            warning: "#ffc200",
+            gray: "#babfc2",
+            dark: "#34495e",
 
-Vue.use(Vuetify);
-Vue.use(colors);
-Vue.config.productionTip = false
-
-new Vue({
-  render: h => h(App),
-  router,
-  store,
-}).$mount('#app')
+            // Custom colors
+            yourCustomColor: "#d0f55d",
+          },
+        },
+      },
+    })
+  )
+  .mount("#app");
