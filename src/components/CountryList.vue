@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import { reactive, defineEmits } from "vue";
+import { reactive } from "vue";
 import { VaChip } from "vuestic-ui";
 
 defineEmits(["update-country"]);
