@@ -6,7 +6,7 @@
     </h3>
     <div class="container">
       <div v-for="category in categories" :key="category" class="custom_btn">
-        <VaChip size="large" class="mr-6 mb-2">
+        <VaChip size="large" class="chip" @click="$emit('update-category', category)">
           {{ capitalize(category) }}
         </VaChip>
       </div>
@@ -17,6 +17,8 @@
 <script setup>
 import { ref } from "vue";
 import { VaChip } from "vuestic-ui";
+
+defineEmits(["update-category"]);
 
 const categories = ref([
   "business",
@@ -40,5 +42,9 @@ const capitalize = (str) => {
   justify-content: center;
   width: 80%;
   margin: 1rem auto;
+}
+
+.container .chip {
+  margin: 4px;
 }
 </style>
