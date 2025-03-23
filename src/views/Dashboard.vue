@@ -49,7 +49,6 @@ import Loader from "../components/Loader.vue";
 import {
   VaCard,
   VaCardContent,
-  VaCardTitle,
   VaInput,
   VaButton,
 } from "vuestic-ui/web-components";
