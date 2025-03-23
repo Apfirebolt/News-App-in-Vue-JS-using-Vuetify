@@ -6,7 +6,7 @@
         v-for="each_country in state.country_codes"
         :key="each_country.country_name"
       >
-        <VaChip size="large" class="mr-6 mb-2">
+        <VaChip size="large" class="mr-6 mb-2" @click="$emit('update-country', each_country.country_code)">
           {{ capitalize(each_country.country_name) }}
         </VaChip>
       </div>
@@ -15,8 +15,10 @@
 </template>
 
 <script setup>
-import { reactive } from "vue";
+import { reactive, defineEmits } from "vue";
 import { VaChip } from "vuestic-ui";
+
+defineEmits(["update-country"]);
 
 const state = reactive({
   countries: [

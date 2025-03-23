@@ -3,11 +3,11 @@
     <h1>News Sources</h1>
     <p>Welcome to our News Dashboard App!</p>
 
+    <Loader v-if="isLoading" />
     <div>
       <va-card
         v-for="source in sources"
         :key="source.id"
-        color="secondary"
         :bordered=true
         class="cursor-pointer source-card"
         @click="() => $router.push(`/sources/${source.id}`)"
@@ -35,10 +35,12 @@
 <script setup>
 import { onMounted, computed } from "vue";
 import { useNewsStore } from "../stores/news";
+import Loader from "../components/Loader.vue";
 import { VaCard, VaCardContent, VaCardTitle } from "vuestic-ui/web-components";
 
 const newsStore = useNewsStore();
 const sources = computed(() => newsStore.getSources);
+const isLoading = computed(() => newsStore.isLoading);
 
 onMounted(async () => {
   await newsStore.getSourcesAction();
@@ -74,6 +76,8 @@ h1 {
 .source-card {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
+  color: white !important;
+  background-color: #cd5c5c !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 

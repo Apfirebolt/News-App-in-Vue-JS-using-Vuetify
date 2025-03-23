@@ -1,14 +1,13 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import httpClient from "../plugins/interceptor";
-import { useAuth } from "./auth";
 
-const auth = useAuth();
 
 export const useNewsStore = defineStore("news", {
   state: () => ({
     sources: ref([]),
     news: ref([]),
+    headlines: ref([]),
     categories: ref([]),
     countries: ref([]),
     loading: ref(false),
@@ -17,6 +16,9 @@ export const useNewsStore = defineStore("news", {
   getters: {
     getSources() {
       return this.sources;
+    },
+    getHeadlines() {
+      return this.headlines;
     },
     getNews() {
       return this.news;
@@ -87,6 +89,19 @@ export const useNewsStore = defineStore("news", {
         this.loading = true;
         const response = await httpClient.get(`everything?q=${payload.searchText}&pageSize=${payload.pageSize}&page=${payload.page}&apiKey=${import.meta.env.VITE_APP_KEY}`);
         this.news = response.data.articles;
+      } catch (error) {
+        console.log(error);
+        return error;
+      } finally {
+        this.loading = false;
+      }
+    },
+
+    async getHeadlinesAction(payload) {
+      try {
+        this.loading = true;
+        const response = await httpClient.get(`top-headlines?country=${payload.country}&category=${payload.category}&apiKey=${import.meta.env.VITE_APP_KEY}`);
+        this.headlines = response.data.articles;
       } catch (error) {
         console.log(error);
         return error;
